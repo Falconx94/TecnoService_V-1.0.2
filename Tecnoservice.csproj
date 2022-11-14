@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{846F5D04-E171-4E71-8588-87E677AEF88D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Tecnoservice</RootNamespace>
+    <AssemblyName>Tecnoservice</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\BD_Conex.cs" />
+    <Compile Include="Class\Cls_Abono.cs" />
+    <Compile Include="Class\Cls_Cliente.cs" />
+    <Compile Include="Class\Cls_Login.cs" />
+    <Compile Include="Class\Cls_Proveedores.cs" />
+    <Compile Include="DsClientes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsClientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DsClientesOros.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsClientesOros.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DsDispositivos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsDispositivos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsPROVEEDOR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPROVEEDOR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DsProveedores.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsProveedores.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Abonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Abonos.Designer.cs">
+      <DependentUpon>Abonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Clientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\compras.Designer.cs">
+      <DependentUpon>compras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Dispositivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Dispositivo.Designer.cs">
+      <DependentUpon>Dispositivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Menu Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Menu Principal.Designer.cs">
+      <DependentUpon>Menu Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\proveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\proveedores.Designer.cs">
+      <DependentUpon>proveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Servicios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Servicios.Designer.cs">
+      <DependentUpon>Servicios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formas\Venta.Designer.cs">
+      <DependentUpon>Venta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formas\Abonos.resx">
+      <DependentUpon>Abonos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\compras.resx">
+      <DependentUpon>compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Dispositivo.resx">
+      <DependentUpon>Dispositivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Menu Principal.resx">
+      <DependentUpon>Menu Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\proveedores.resx">
+      <DependentUpon>proveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Servicios.resx">
+      <DependentUpon>Servicios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formas\Venta.resx">
+      <DependentUpon>Venta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DsClientes.xsc">
+      <DependentUpon>DsClientes.xsd</DependentUpon>
+    </None>
+    <None Include="DsClientes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsClientes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DsClientes.xss">
+      <DependentUpon>DsClientes.xsd</DependentUpon>
+    </None>
+    <None Include="DsClientesOros.xsc">
+      <DependentUpon>DsClientesOros.xsd</DependentUpon>
+    </None>
+    <None Include="DsClientesOros.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsClientesOros.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DsClientesOros.xss">
+      <DependentUpon>DsClientesOros.xsd</DependentUpon>
+    </None>
+    <None Include="DsDispositivos.xsc">
+      <DependentUpon>DsDispositivos.xsd</DependentUpon>
+    </None>
+    <None Include="DsDispositivos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsDispositivos.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DsDispositivos.xss">
+      <DependentUpon>DsDispositivos.xsd</DependentUpon>
+    </None>
+    <None Include="dsPROVEEDOR.xsc">
+      <DependentUpon>dsPROVEEDOR.xsd</DependentUpon>
+    </None>
+    <None Include="dsPROVEEDOR.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPROVEEDOR.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsPROVEEDOR.xss">
+      <DependentUpon>dsPROVEEDOR.xsd</DependentUpon>
+    </None>
+    <None Include="DsProveedores.xsc">
+      <DependentUpon>DsProveedores.xsd</DependentUpon>
+    </None>
+    <None Include="DsProveedores.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsProveedores.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DsProveedores.xss">
+      <DependentUpon>DsProveedores.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disquete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

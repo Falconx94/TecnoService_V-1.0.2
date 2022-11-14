@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TecnoService V-1.0.2", "TecnoService V-1.0.2.csproj", "{A031F64E-482E-43B1-8BED-BAE604DE5BE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A031F64E-482E-43B1-8BED-BAE604DE5BE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A031F64E-482E-43B1-8BED-BAE604DE5BE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A031F64E-482E-43B1-8BED-BAE604DE5BE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A031F64E-482E-43B1-8BED-BAE604DE5BE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {706E0548-FD66-4B4B-A79A-4E7308495878}
+	EndGlobalSection
+EndGlobal
