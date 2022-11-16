@@ -29,11 +29,11 @@ namespace Tecnoservice.Formas
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Servicios));
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.components = new System.ComponentModel.Container();
+            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtCltId = new System.Windows.Forms.TextBox();
+            this.txtSVID = new System.Windows.Forms.TextBox();
+            this.dtpFec_Servicio = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,46 +44,58 @@ namespace Tecnoservice.Formas
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.Cbox_TipoServicio = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Radbtn_Fin = new System.Windows.Forms.RadioButton();
-            this.Radbtn_Espera = new System.Windows.Forms.RadioButton();
+            this.Radbtn_Proceso = new System.Windows.Forms.RadioButton();
             this.Radbtn_Activo = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.svIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.svTipoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.svPrecioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.svDescripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.svFechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.svEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.servicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsServicios = new Tecnoservice.dsServicios();
+            this.servicioTableAdapter = new Tecnoservice.dsServiciosTableAdapters.ServicioTableAdapter();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.servicioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsServicios)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox4
+            // txtPrecio
             // 
-            this.textBox4.Location = new System.Drawing.Point(28, 242);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(139, 20);
-            this.textBox4.TabIndex = 20;
+            this.txtPrecio.Location = new System.Drawing.Point(28, 242);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.Size = new System.Drawing.Size(139, 20);
+            this.txtPrecio.TabIndex = 20;
             // 
-            // textBox2
+            // txtCltId
             // 
-            this.textBox2.Location = new System.Drawing.Point(28, 129);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 18;
+            this.txtCltId.Location = new System.Drawing.Point(28, 129);
+            this.txtCltId.Name = "txtCltId";
+            this.txtCltId.Size = new System.Drawing.Size(100, 20);
+            this.txtCltId.TabIndex = 18;
             // 
-            // textBox1
+            // txtSVID
             // 
-            this.textBox1.Location = new System.Drawing.Point(28, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 17;
+            this.txtSVID.Location = new System.Drawing.Point(28, 76);
+            this.txtSVID.Name = "txtSVID";
+            this.txtSVID.Size = new System.Drawing.Size(100, 20);
+            this.txtSVID.TabIndex = 17;
             // 
-            // dateTimePicker1
+            // dtpFec_Servicio
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(210, 76);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 16;
+            this.dtpFec_Servicio.Location = new System.Drawing.Point(210, 76);
+            this.dtpFec_Servicio.Name = "dtpFec_Servicio";
+            this.dtpFec_Servicio.Size = new System.Drawing.Size(200, 20);
+            this.dtpFec_Servicio.TabIndex = 16;
             // 
             // label6
             // 
@@ -138,24 +150,21 @@ namespace Tecnoservice.Formas
             this.toolStripButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(980, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1209, 25);
             this.toolStrip1.TabIndex = 21;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(53, 22);
             this.toolStripButton1.Text = "Guardar";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
             this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(46, 22);
@@ -164,7 +173,6 @@ namespace Tecnoservice.Formas
             // toolStripButton3
             // 
             this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(54, 22);
@@ -173,18 +181,21 @@ namespace Tecnoservice.Formas
             // Cbox_TipoServicio
             // 
             this.Cbox_TipoServicio.FormattingEnabled = true;
+            this.Cbox_TipoServicio.Items.AddRange(new object[] {
+            "Reparación de equipo",
+            "Venta de producto"});
             this.Cbox_TipoServicio.Location = new System.Drawing.Point(28, 186);
             this.Cbox_TipoServicio.Name = "Cbox_TipoServicio";
             this.Cbox_TipoServicio.Size = new System.Drawing.Size(139, 21);
             this.Cbox_TipoServicio.TabIndex = 22;
             // 
-            // textBox3
+            // txtDescripcion
             // 
-            this.textBox3.Location = new System.Drawing.Point(28, 305);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(168, 41);
-            this.textBox3.TabIndex = 24;
+            this.txtDescripcion.Location = new System.Drawing.Point(28, 305);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(168, 41);
+            this.txtDescripcion.TabIndex = 24;
             // 
             // label4
             // 
@@ -207,7 +218,7 @@ namespace Tecnoservice.Formas
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Radbtn_Fin);
-            this.groupBox1.Controls.Add(this.Radbtn_Espera);
+            this.groupBox1.Controls.Add(this.Radbtn_Proceso);
             this.groupBox1.Controls.Add(this.Radbtn_Activo);
             this.groupBox1.Location = new System.Drawing.Point(210, 125);
             this.groupBox1.Name = "groupBox1";
@@ -226,17 +237,16 @@ namespace Tecnoservice.Formas
             this.Radbtn_Fin.Text = "Finalizado";
             this.Radbtn_Fin.UseVisualStyleBackColor = true;
             // 
-            // Radbtn_Espera
+            // Radbtn_Proceso
             // 
-            this.Radbtn_Espera.AutoSize = true;
-            this.Radbtn_Espera.Location = new System.Drawing.Point(6, 43);
-            this.Radbtn_Espera.Name = "Radbtn_Espera";
-            this.Radbtn_Espera.Size = new System.Drawing.Size(74, 17);
-            this.Radbtn_Espera.TabIndex = 1;
-            this.Radbtn_Espera.TabStop = true;
-            this.Radbtn_Espera.Text = "En Espera";
-            this.Radbtn_Espera.UseVisualStyleBackColor = true;
-            this.Radbtn_Espera.CheckedChanged += new System.EventHandler(this.Radbtn_Espera_CheckedChanged);
+            this.Radbtn_Proceso.AutoSize = true;
+            this.Radbtn_Proceso.Location = new System.Drawing.Point(6, 43);
+            this.Radbtn_Proceso.Name = "Radbtn_Proceso";
+            this.Radbtn_Proceso.Size = new System.Drawing.Size(74, 17);
+            this.Radbtn_Proceso.TabIndex = 1;
+            this.Radbtn_Proceso.TabStop = true;
+            this.Radbtn_Proceso.Text = "En Espera";
+            this.Radbtn_Proceso.UseVisualStyleBackColor = true;
             // 
             // Radbtn_Activo
             // 
@@ -248,32 +258,107 @@ namespace Tecnoservice.Formas
             this.Radbtn_Activo.TabStop = true;
             this.Radbtn_Activo.Text = "Activo";
             this.Radbtn_Activo.UseVisualStyleBackColor = true;
-            this.Radbtn_Activo.CheckedChanged += new System.EventHandler(this.Radbtn_Activo_CheckedChanged);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.svIdDataGridViewTextBoxColumn,
+            this.cltIdDataGridViewTextBoxColumn,
+            this.svTipoDataGridViewTextBoxColumn,
+            this.svPrecioDataGridViewTextBoxColumn,
+            this.svDescripcionDataGridViewTextBoxColumn,
+            this.svFechaDataGridViewTextBoxColumn,
+            this.svEstadoDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.servicioBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(432, 54);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(503, 292);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(745, 292);
             this.dataGridView1.TabIndex = 27;
+            // 
+            // svIdDataGridViewTextBoxColumn
+            // 
+            this.svIdDataGridViewTextBoxColumn.DataPropertyName = "Sv_Id";
+            this.svIdDataGridViewTextBoxColumn.HeaderText = "Servicio Id";
+            this.svIdDataGridViewTextBoxColumn.Name = "svIdDataGridViewTextBoxColumn";
+            this.svIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cltIdDataGridViewTextBoxColumn
+            // 
+            this.cltIdDataGridViewTextBoxColumn.DataPropertyName = "Clt_Id";
+            this.cltIdDataGridViewTextBoxColumn.HeaderText = "Cliente Id";
+            this.cltIdDataGridViewTextBoxColumn.Name = "cltIdDataGridViewTextBoxColumn";
+            this.cltIdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // svTipoDataGridViewTextBoxColumn
+            // 
+            this.svTipoDataGridViewTextBoxColumn.DataPropertyName = "Sv_Tipo";
+            this.svTipoDataGridViewTextBoxColumn.HeaderText = "Tipo de Servicio";
+            this.svTipoDataGridViewTextBoxColumn.Name = "svTipoDataGridViewTextBoxColumn";
+            this.svTipoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // svPrecioDataGridViewTextBoxColumn
+            // 
+            this.svPrecioDataGridViewTextBoxColumn.DataPropertyName = "Sv_Precio";
+            this.svPrecioDataGridViewTextBoxColumn.HeaderText = "Precio del Servicio";
+            this.svPrecioDataGridViewTextBoxColumn.Name = "svPrecioDataGridViewTextBoxColumn";
+            this.svPrecioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // svDescripcionDataGridViewTextBoxColumn
+            // 
+            this.svDescripcionDataGridViewTextBoxColumn.DataPropertyName = "Sv_Descripcion";
+            this.svDescripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion del servicio";
+            this.svDescripcionDataGridViewTextBoxColumn.Name = "svDescripcionDataGridViewTextBoxColumn";
+            this.svDescripcionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // svFechaDataGridViewTextBoxColumn
+            // 
+            this.svFechaDataGridViewTextBoxColumn.DataPropertyName = "Sv_Fecha";
+            this.svFechaDataGridViewTextBoxColumn.HeaderText = "Fecha de realizado el servicio";
+            this.svFechaDataGridViewTextBoxColumn.Name = "svFechaDataGridViewTextBoxColumn";
+            this.svFechaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // svEstadoDataGridViewTextBoxColumn
+            // 
+            this.svEstadoDataGridViewTextBoxColumn.DataPropertyName = "Sv_Estado";
+            this.svEstadoDataGridViewTextBoxColumn.HeaderText = "Estado del Servicio";
+            this.svEstadoDataGridViewTextBoxColumn.Name = "svEstadoDataGridViewTextBoxColumn";
+            this.svEstadoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // servicioBindingSource
+            // 
+            this.servicioBindingSource.DataMember = "Servicio";
+            this.servicioBindingSource.DataSource = this.dsServicios;
+            // 
+            // dsServicios
+            // 
+            this.dsServicios.DataSetName = "dsServicios";
+            this.dsServicios.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // servicioTableAdapter
+            // 
+            this.servicioTableAdapter.ClearBeforeFill = true;
             // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 380);
+            this.ClientSize = new System.Drawing.Size(1209, 380);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Cbox_TipoServicio);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtCltId);
+            this.Controls.Add(this.txtSVID);
+            this.Controls.Add(this.dtpFec_Servicio);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -289,6 +374,8 @@ namespace Tecnoservice.Formas
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.servicioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsServicios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,10 +383,10 @@ namespace Tecnoservice.Formas
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtCltId;
+        private System.Windows.Forms.TextBox txtSVID;
+        private System.Windows.Forms.DateTimePicker dtpFec_Servicio;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
@@ -310,13 +397,23 @@ namespace Tecnoservice.Formas
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ComboBox Cbox_TipoServicio;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton Radbtn_Fin;
-        private System.Windows.Forms.RadioButton Radbtn_Espera;
+        private System.Windows.Forms.RadioButton Radbtn_Proceso;
         private System.Windows.Forms.RadioButton Radbtn_Activo;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private dsServicios dsServicios;
+        private System.Windows.Forms.BindingSource servicioBindingSource;
+        private dsServiciosTableAdapters.ServicioTableAdapter servicioTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn svIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn svTipoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn svPrecioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn svDescripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn svFechaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn svEstadoDataGridViewTextBoxColumn;
     }
 }

@@ -40,12 +40,7 @@ BEGIN
         UPDATE Clientes set Clt_Nombre = @clt_Nombre,  Clt_Ap_Paterno= @clt_Ap_Paterno, Clt_Ap_Materno = @clt_AP_Materno, Clt_Telefono = @clt_Telefono
         WHERE Clt_Id = @clt_Id
     END
-    if @OP = 4
-    BEGIN
-        SELECT Clt_Id, Clt_Nombre as Nombre, Clt_AP_Paterno as Ap_Paterno, DBO.Fn_Clientes('A') as Estado
-        FROM Clientes
-    END
-	if @OP = 5
+	if @OP = 4
 	begin
 		Delete from Clientes
 		where Clt_Id = @clt_Id

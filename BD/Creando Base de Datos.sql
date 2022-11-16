@@ -12,7 +12,6 @@ Create table Clientes
 	Clt_Estatus char (1) null,
 	Primary Key (Clt_Id)
 );
-
 Create table Dispositivo
 (
 	Ds_Id int not null Primary key,
@@ -23,7 +22,6 @@ Create table Dispositivo
 	Ds_IMEI varchar(15)not null,
 	Foreign Key (Clt_Id) References Clientes(Clt_Id)
 );
-
 Create table Proveedores
 (
 	Prv_Id int not null Primary key,
@@ -34,26 +32,15 @@ Create table Proveedores
 );
 Create table Servicio
 (
-<<<<<<< HEAD
 	Sv_Id int not null Primary key,
-=======
-	Sv_Id int not null primary key,
->>>>>>> 637bfefe6f485ee7a31f96b73a8382cb4e23018e
-	Com_Id int not null,
-	Clt_Id int  not null,
+	Clt_Id int not null,
 	Sv_Tipo tinyint not null, -- 1=Reparación de equipo 2=Venta de producto
-	Sv_Precio int not null, -- Costo del Servicio o Producto
-<<<<<<< HEAD
-	Sv_Descripcion varchar (150) not null, --Descripción detallada del producto o servicio
-	Sv_Fecha datetime not null,
-=======
+	Sv_Precio float not null, -- Costo del Servicio o Producto
 	Sv_Descripcion varchar (150) not null, --Descripción detallada del producto o serviciory key (Sv_Id),
 	Sv_Fecha datetime not null,
 	Sv_Estado char(1) null, -- P = En Proceso / R = Realizado / C = Cancelado 
->>>>>>> 637bfefe6f485ee7a31f96b73a8382cb4e23018e
 	Foreign Key (Clt_Id) References Clientes(Clt_Id)
 );
-
 Create Table Detalles_Servicio
 (
 	DetSV_Id int not null Primary Key, --LO QUE SERIA EL FOLIO
@@ -62,7 +49,6 @@ Create Table Detalles_Servicio
 	Foreign Key (Sv_Id) References Servicio (Sv_Id),
 	Foreign Key (Ds_Id) References Dispositivo (Ds_Id)
 );
-
 Create table Compras
 (
 	Com_Id int not null Primary key,
@@ -85,11 +71,7 @@ Create table Producto
 	Prod_Tipo tinyint not null, -- 1=Reparación de equipo 2=Venta de producto
 	Prod_Precio int not null, -- Costo del Servicio o Producto
 	Prod_Descripcion varchar (150) not null, --Descripción detallada del producto o servicio
-<<<<<<< HEAD
-=======
-	Primary key (Prod_Id),
-	Prod_Estado char(1) null, -- E = Existencia / A = Agotado
->>>>>>> 637bfefe6f485ee7a31f96b73a8382cb4e23018e
+	Prod_Estado char(1) null, -- E = Existencia / A = Agotado}
 	Foreign key (Com_Id) References Compras(Com_Id),
 	Foreign key (Unit_Id) References Unidad(Unit_Id)
 );
@@ -117,11 +99,7 @@ Create table Usuario
 	Us_Ap_Materno varchar(120) not null unique,
 	Us_Telefono varchar(10) not null,
 	Us_Nivel tinyint not null, /* 1-Admin 2-Tecnico 3-Vendedor*/
-<<<<<<< HEAD
-=======
-	Primary Key (Us_Id),
 	Us_Estado char(1) null -- A = Activo / C = Cancelado
->>>>>>> 637bfefe6f485ee7a31f96b73a8382cb4e23018e
 );
 /*Solo Admin puede Ingresar, Buscar o Eliminar Tecnicos, Clientes, Proveedores y Vendedores,
 los Tecnicos y Vendedores no pueden hacer otros movivmientos que no sean Servicios, Ventas
@@ -135,12 +113,9 @@ Create Table Ventas
 	Us_Id int not null,
 	Vt_Fecha datetime,
 	foreign key (Clt_Id) References Clientes (Clt_Id),
-<<<<<<< HEAD
 	foreign key (Us_Id) References Usuario (Us_Id),
 	Foreign Key (Clt_Id) references Clientes (Clt_Id)
 );
-
-
 Create Table Detalles_Venta
 (
 	Vt_Id int not null,
@@ -151,13 +126,9 @@ Create Table Detalles_Venta
 	DetVent_Fecha datetime not null, --Fecha en que se realizo la venta
 	Foreign key (Prod_Id) references Producto(Prod_Id),
 	Foreign key (Us_Id) references Usuario(Us_Id),
-	Foreign key (Vt_Id) references Ventas (Vt_Id)
-);
-=======
+	Foreign key (Vt_Id) references Ventas (Vt_Id),
 	foreign key (Us_Id) References Usuario (Us_Id)
 );
-
->>>>>>> 637bfefe6f485ee7a31f96b73a8382cb4e23018e
 Create Table CARRITO_Venta
 (
 	Carrito_Id int not null Primary Key,

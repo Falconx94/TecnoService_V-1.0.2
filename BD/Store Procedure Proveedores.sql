@@ -1,11 +1,4 @@
-USE [TecnoService]
-GO
-/****** Object:  StoredProcedure [dbo].[SP_Proveedores]    Script Date: 03/11/2022 03:08:21 p. m. ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER procedure [dbo].[SP_Proveedores]
+Create procedure SP_Proveedores
 @OP tinyint,
 @Prov_Id int = 0,
 @Prov_RasSoci varchar (50)=null,
@@ -42,12 +35,12 @@ begin
 	end
 	if @OP = 4
 	begin
-		select Prv_Id, Prv_Razonsocial as Razon_Social, Prv_Nombre_Contacto as Nombre_Del_Contacto, Prv_Telefono as Telefono,  Prv_Direccion as Direccion, DBO.Fn_Proveedores('A') as Estado
-		from Proveedores
-	end
-		if @OP = 5
-	begin
 		Delete from Proveedores
 		where Prv_Id = @Prov_Id
 	end
 end
+
+--select * from proveedores
+
+--alter table Proveedores
+--add Prv_Estatus char(1)

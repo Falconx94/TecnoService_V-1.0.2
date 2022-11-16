@@ -13,7 +13,6 @@ namespace Tecnoservice.Class
     {
         SqlConnection con = new SqlConnection(BD_Conex.conectar());
         SqlCommand cmd = new SqlCommand();
-        SqlDataReader dr;
         bool band;
 
         public string Log_Usuario { get; set; }

@@ -51,6 +51,7 @@
     <Compile Include="Class\Cls_Cliente.cs" />
     <Compile Include="Class\Cls_Login.cs" />
     <Compile Include="Class\Cls_Proveedores.cs" />
+    <Compile Include="Class\Cls_Servicios.cs" />
     <Compile Include="DsClientes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +76,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DsProveedores.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsServicios.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsServicios.xsd</DependentUpon>
     </Compile>
     <Compile Include="Formas\Abonos.cs">
       <SubType>Form</SubType>
@@ -223,6 +229,17 @@
     </None>
     <None Include="DsProveedores.xss">
       <DependentUpon>DsProveedores.xsd</DependentUpon>
+    </None>
+    <None Include="dsServicios.xsc">
+      <DependentUpon>dsServicios.xsd</DependentUpon>
+    </None>
+    <None Include="dsServicios.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsServicios.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsServicios.xss">
+      <DependentUpon>dsServicios.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

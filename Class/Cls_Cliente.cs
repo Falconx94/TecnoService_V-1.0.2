@@ -12,9 +12,6 @@ namespace Tecnoservice.Class
 {
     public class Cls_Cliente
     {
-        //BD_Conex scon = new BD_Conex();
-       
-        SqlDataReader dr;
         bool band;
 
         public int Clt_Id { get; set; }
@@ -86,7 +83,7 @@ namespace Tecnoservice.Class
             SqlCommand cmd = new SqlCommand("", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "SP_Clientes";
-            cmd.Parameters.AddWithValue("@OP", 5);
+            cmd.Parameters.AddWithValue("@OP", 4);
             cmd.Parameters.AddWithValue("@clt_Id", Clt_Id);
 
             try
