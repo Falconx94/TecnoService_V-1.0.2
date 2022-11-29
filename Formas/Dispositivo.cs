@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Tecnoservice.Class;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Tecnoservice.Formas
 {
@@ -24,8 +25,6 @@ namespace Tecnoservice.Formas
         {
             InitializeComponent();
             Consecutivo();
-            this.sdconexion = sconexion;
-            dispositivoTableAdapter.Connection.ConnectionString = this.sdconexion;
         }
         public void Consecutivo()
         {
@@ -34,16 +33,33 @@ namespace Tecnoservice.Formas
             dr = cmd.ExecuteReader();
             if (dr.Read())
             {
-                txtID.Text = Convert.ToString(dr.GetInt32(0));
+                txtIdDispositivo.Text = Convert.ToString(dr.GetInt32(0));
             }
             con.Close();
         }
         public void GuardarDispositivo()
         {
+            if(Valida_Cliente())
+            {
 
+            }
+            else
+            {
+                MessageBox.Show("No hay cliente registrado con ese identificador, asegurese de que sea un cliente ya resgistrado",
+                    "ERROR", MessageBoxButtons.OKCancel ,MessageBoxIcon.Error);
+            }
         }
-
-
+        public bool Valida_Cliente()
+        {
+            int cliente = Convert.ToInt32(txtCltID.Text);
+            string sql = "Select * from Clientes where Clt_Id = " + cliente;
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read()) band1 = true;
+            else band1 = false;
+            con.Close();
+            return band1;
+        }
         public void Valida_estado()
         {
             if (band2 == true)
@@ -66,12 +82,12 @@ namespace Tecnoservice.Formas
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            GuardarDispositivo();
         }
 
         public void Datos_Fijos()
         {
-            txtDispositivo.Enabled = false;
+            txtIdDispositivo.Enabled = false;
             txtDetDispositivo.Enabled = false;
             txtIMEIDispo.Enabled = false;
             txtMarcaDispo.Enabled = false;
@@ -84,11 +100,22 @@ namespace Tecnoservice.Formas
             Menu.Show();
         }
 
+
         private void Dispositivo_Load(object sender, EventArgs e)
         {
+            Actualiza_Datagrid();
+        }
+
+        private void DTG_Cliente_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCltID.Text = this.dsClientesFalcon.Clientes[clientesBindingSource.Position].Clt_Id.ToString();
+        }
+        public void Actualiza_Datagrid()
+        {
+            // TODO: esta línea de código carga datos en la tabla 'dsClientesFalcon.Clientes' Puede moverla o quitarla según sea necesario.
+            this.clientesTableAdapter.Fill(this.dsClientesFalcon.Clientes);
             // TODO: esta línea de código carga datos en la tabla 'dsDispositivos.Dispositivo' Puede moverla o quitarla según sea necesario.
             this.dispositivoTableAdapter.Fill(this.dsDispositivos.Dispositivo);
-
         }
     }
 }

@@ -139,7 +139,6 @@ namespace Tecnoservice.Formas
             }
             con.Close();
         }
-
         public void Valida_estado()
         {
             if (band2 == true)
@@ -165,25 +164,21 @@ namespace Tecnoservice.Formas
             txtAp_Materno.Enabled = false;
             txtTelefono.Enabled = false;
         }
-        
         private void btnDispositivo_Click(object sender, EventArgs e)
         {
             //dispo.ShowDialog();
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Armar();
             Actualizar();
             Limpiar();
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Eliminar();
             Limpiar();
         }
-
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             txtID.Text = this.dsClientes.Clientes[clientesBindingSource.Position].Clt_Id.ToString();
@@ -206,28 +201,7 @@ namespace Tecnoservice.Formas
                     break;
             }
         }
-            //    txtID.Text = this.dsClientesOros.Clientes[clientesBindingSource1.Position].Clt_Id.ToString();
-            //    txtNombre.Text = this.dsClientesOros.Clientes[clientesBindingSource1.Position].Clt_Nombre.ToString();
-            //    txtAp_Paterno.Text = this.dsClientesOros.Clientes[clientesBindingSource1.Position].Clt_Ap_Paterno.ToString();
-            //    txtAp_Materno.Text = this.dsClientesOros.Clientes[clientesBindingSource1.Position].Clt_Ap_Materno.ToString();
-            //    txtTelefono.Text = this.dsClientesOros.Clientes[clientesBindingSource1.Position].Clt_Telefono.ToString();
-            //    char Status = Convert.ToChar(dsClientesOros.Clientes[clientesBindingSource1.Position].Clt_Estatus);
-            //    switch (Status)
-            //    {
-            //        case 'A':
-            //            Radbtn_Activo.Checked = true;
-            //            break;
-            //        case 'I':
-            //            Radbtn_Inactivo.Checked = true;
-            //            break;
-            //        default:
-            //            Radbtn_Activo.Checked = false;
-            //            Radbtn_Inactivo.Checked = false;
-            //            break;
-            //    }
-            //}
-
-            private void Clientes_FormClosing(object sender, FormClosingEventArgs e)
+        private void Clientes_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form Menu = new Menu_Principal();
             Menu.Show();

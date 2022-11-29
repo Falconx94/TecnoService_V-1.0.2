@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using Tecnoservice.Class;
 
 namespace Tecnoservice.Class
 {
     public class Cls_Cliente
     {
         bool band;
-
         public int Clt_Id { get; set; }
         public string Clt_Nombre { get; set; }
         public string Clt_Ap_Paterno { get; set; }

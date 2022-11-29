@@ -18,7 +18,7 @@ namespace Tecnoservice.Formas
         Abonos ab = new Abonos();
         Clientes clt = new Clientes();
         compras cmp = new compras();
-       // Dispositivo dsp = new Dispositivo(this.scon);
+        //Dispositivo dsp = new Dispositivo(this.scon);
         proveedores prv = new proveedores();
         Servicios srv = new Servicios();
         Venta vnt = new Venta();

@@ -42,7 +42,7 @@ namespace Tecnoservice.Formas
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btnEliminar = new System.Windows.Forms.ToolStripButton();
             this.Cbox_TipoServicio = new System.Windows.Forms.ComboBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@ namespace Tecnoservice.Formas
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Radbtn_Fin = new System.Windows.Forms.RadioButton();
             this.Radbtn_Proceso = new System.Windows.Forms.RadioButton();
-            this.Radbtn_Activo = new System.Windows.Forms.RadioButton();
+            this.Radbtn_Realizado = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.svIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cltIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,7 +147,7 @@ namespace Tecnoservice.Formas
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.toolStripButton2,
-            this.toolStripButton3});
+            this.btnEliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1209, 25);
@@ -161,6 +161,7 @@ namespace Tecnoservice.Formas
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(53, 22);
             this.toolStripButton1.Text = "Guardar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton2
             // 
@@ -170,13 +171,14 @@ namespace Tecnoservice.Formas
             this.toolStripButton2.Size = new System.Drawing.Size(46, 22);
             this.toolStripButton2.Text = "Buscar";
             // 
-            // toolStripButton3
+            // btnEliminar
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(54, 22);
-            this.toolStripButton3.Text = "Eliminar";
+            this.btnEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(54, 22);
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // Cbox_TipoServicio
             // 
@@ -219,7 +221,7 @@ namespace Tecnoservice.Formas
             // 
             this.groupBox1.Controls.Add(this.Radbtn_Fin);
             this.groupBox1.Controls.Add(this.Radbtn_Proceso);
-            this.groupBox1.Controls.Add(this.Radbtn_Activo);
+            this.groupBox1.Controls.Add(this.Radbtn_Realizado);
             this.groupBox1.Location = new System.Drawing.Point(210, 125);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(123, 96);
@@ -231,10 +233,10 @@ namespace Tecnoservice.Formas
             this.Radbtn_Fin.AutoSize = true;
             this.Radbtn_Fin.Location = new System.Drawing.Point(6, 66);
             this.Radbtn_Fin.Name = "Radbtn_Fin";
-            this.Radbtn_Fin.Size = new System.Drawing.Size(72, 17);
+            this.Radbtn_Fin.Size = new System.Drawing.Size(76, 17);
             this.Radbtn_Fin.TabIndex = 2;
             this.Radbtn_Fin.TabStop = true;
-            this.Radbtn_Fin.Text = "Finalizado";
+            this.Radbtn_Fin.Text = "Cancelado";
             this.Radbtn_Fin.UseVisualStyleBackColor = true;
             // 
             // Radbtn_Proceso
@@ -242,22 +244,22 @@ namespace Tecnoservice.Formas
             this.Radbtn_Proceso.AutoSize = true;
             this.Radbtn_Proceso.Location = new System.Drawing.Point(6, 43);
             this.Radbtn_Proceso.Name = "Radbtn_Proceso";
-            this.Radbtn_Proceso.Size = new System.Drawing.Size(74, 17);
+            this.Radbtn_Proceso.Size = new System.Drawing.Size(79, 17);
             this.Radbtn_Proceso.TabIndex = 1;
             this.Radbtn_Proceso.TabStop = true;
-            this.Radbtn_Proceso.Text = "En Espera";
+            this.Radbtn_Proceso.Text = "Trabajando";
             this.Radbtn_Proceso.UseVisualStyleBackColor = true;
             // 
-            // Radbtn_Activo
+            // Radbtn_Realizado
             // 
-            this.Radbtn_Activo.AutoSize = true;
-            this.Radbtn_Activo.Location = new System.Drawing.Point(7, 20);
-            this.Radbtn_Activo.Name = "Radbtn_Activo";
-            this.Radbtn_Activo.Size = new System.Drawing.Size(55, 17);
-            this.Radbtn_Activo.TabIndex = 0;
-            this.Radbtn_Activo.TabStop = true;
-            this.Radbtn_Activo.Text = "Activo";
-            this.Radbtn_Activo.UseVisualStyleBackColor = true;
+            this.Radbtn_Realizado.AutoSize = true;
+            this.Radbtn_Realizado.Location = new System.Drawing.Point(7, 20);
+            this.Radbtn_Realizado.Name = "Radbtn_Realizado";
+            this.Radbtn_Realizado.Size = new System.Drawing.Size(72, 17);
+            this.Radbtn_Realizado.TabIndex = 0;
+            this.Radbtn_Realizado.TabStop = true;
+            this.Radbtn_Realizado.Text = "Realizado";
+            this.Radbtn_Realizado.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -395,7 +397,7 @@ namespace Tecnoservice.Formas
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton btnEliminar;
         private System.Windows.Forms.ComboBox Cbox_TipoServicio;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.Label label4;
@@ -403,7 +405,7 @@ namespace Tecnoservice.Formas
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton Radbtn_Fin;
         private System.Windows.Forms.RadioButton Radbtn_Proceso;
-        private System.Windows.Forms.RadioButton Radbtn_Activo;
+        private System.Windows.Forms.RadioButton Radbtn_Realizado;
         private System.Windows.Forms.DataGridView dataGridView1;
         private dsServicios dsServicios;
         private System.Windows.Forms.BindingSource servicioBindingSource;

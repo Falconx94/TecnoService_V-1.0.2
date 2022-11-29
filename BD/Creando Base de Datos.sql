@@ -27,16 +27,16 @@ Create table Proveedores
 	Prv_Id int not null Primary key,
 	Prv_Razonsocial varchar (70) not null unique, -- Empresa proveedora
 	Prv_Nombre_Contacto varchar (200) not null, -- Nombre Completo del contacto con la empresa proveedora
-	Prv_Telefono varchar (13) not null, --Suponiendo que sea necesario los +52 o lada de otra nación
-	Prv_Direccion varchar (100) not null, -- Dirección de la empresa proveedora o el proveedor
+	Prv_Telefono varchar (13) not null, --Suponiendo que sea necesario los +52 o lada de otra naciï¿½n
+	Prv_Direccion varchar (100) not null, -- Direcciï¿½n de la empresa proveedora o el proveedor
 );
 Create table Servicio
 (
 	Sv_Id int not null Primary key,
 	Clt_Id int not null,
-	Sv_Tipo tinyint not null, -- 1=Reparación de equipo 2=Venta de producto
+	Sv_Tipo tinyint not null, -- 1=ReparaciÃ³n de equipo 2=Venta de producto
 	Sv_Precio float not null, -- Costo del Servicio o Producto
-	Sv_Descripcion varchar (150) not null, --Descripción detallada del producto o serviciory key (Sv_Id),
+	Sv_Descripcion varchar (150) not null, --DescripciÃ³n detallada del producto o serviciory key (Sv_Id),
 	Sv_Fecha datetime not null,
 	Sv_Estado char(1) null, -- P = En Proceso / R = Realizado / C = Cancelado 
 	Foreign Key (Clt_Id) References Clientes(Clt_Id)
@@ -68,9 +68,9 @@ Create table Producto
 	Prod_Id int not null Primary Key,
 	Com_Id int not null,
 	Unit_Id int not null,
-	Prod_Tipo tinyint not null, -- 1=Reparación de equipo 2=Venta de producto
+	Prod_Tipo tinyint not null, -- 1=Reparaciï¿½n de equipo 2=Venta de producto
 	Prod_Precio int not null, -- Costo del Servicio o Producto
-	Prod_Descripcion varchar (150) not null, --Descripción detallada del producto o servicio
+	Prod_Descripcion varchar (150) not null, --Descripciï¿½n detallada del producto o servicio
 	Prod_Estado char(1) null, -- E = Existencia / A = Agotado}
 	Foreign key (Com_Id) References Compras(Com_Id),
 	Foreign key (Unit_Id) References Unidad(Unit_Id)
@@ -94,7 +94,7 @@ Create table Usuario
 (
 	Us_Id int not null Primary Key,
 	Us_Nombre varchar(50) not null unique,
-	Us_pass varchar(20) not null, -- Contraseña no menor a 7 ni mayor a 20
+	Us_pass varchar(20) not null, -- Contraseï¿½a no menor a 7 ni mayor a 20
 	Us_Ap_Paterno varchar(120) not null unique,
 	Us_Ap_Materno varchar(120) not null unique,
 	Us_Telefono varchar(10) not null,
@@ -153,3 +153,7 @@ Create Table Abonos
 	Abn_Estado char(1), -- A = Activo / F = Finalizado / C = Cancelado
 	Foreign Key (Clt_Id) References Clientes (Clt_Id)
 );
+
+-
+
+delete from Clientes Where Clt_Id = 4

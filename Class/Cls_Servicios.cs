@@ -15,7 +15,7 @@ namespace Tecnoservice.Class
         SqlConnection con = new SqlConnection(BD_Conex.conectar());
         SqlCommand cmd;
         bool band;
-        
+
         public int Srv_ID { get; set; }
         public int SrvClt_Id { get; set; }
         public int Srv_type { get; set; }
@@ -24,11 +24,12 @@ namespace Tecnoservice.Class
         public DateTime Srv_Fecha { get; set; }
         public char Srv_Estado { get; set; }
 
+        
         public bool Guardar()
         {
             cmd = new SqlCommand("", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SP_Clientes";
+            cmd.CommandText = "SP_Servicios";
 
             cmd.Parameters.AddWithValue("@OP", 1);
             cmd.Parameters.AddWithValue("@srv_Id", Srv_ID);
@@ -56,6 +57,11 @@ namespace Tecnoservice.Class
         public bool Eliminar()
         {
             cmd = new SqlCommand("", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SP_Servicios";
+            cmd.Parameters.AddWithValue("@OP", 2);
+            cmd.Parameters.AddWithValue("@srv_Id", Srv_ID);
+            cmd.Parameters.AddWithValue("@srv_cltID", SrvClt_Id);
 
             try
             {
@@ -66,7 +72,7 @@ namespace Tecnoservice.Class
             catch (Exception ex)
             {
                 band = false;
-                MessageBox.Show("Error al guardar los datos =>" + ex);
+                MessageBox.Show("Error al borrar los datos =>" + ex);
             }
             con.Close();
             return band;

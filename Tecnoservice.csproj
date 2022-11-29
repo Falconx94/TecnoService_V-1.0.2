@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +50,7 @@
     <Compile Include="Class\BD_Conex.cs" />
     <Compile Include="Class\Cls_Abono.cs" />
     <Compile Include="Class\Cls_Cliente.cs" />
+    <Compile Include="Class\Cls_Dispositivo.cs" />
     <Compile Include="Class\Cls_Login.cs" />
     <Compile Include="Class\Cls_Proveedores.cs" />
     <Compile Include="Class\Cls_Servicios.cs" />
@@ -56,6 +58,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DsClientes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dsClientesFalcon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsClientesFalcon.xsd</DependentUpon>
     </Compile>
     <Compile Include="DsClientesOros.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -185,6 +192,17 @@
     </None>
     <None Include="DsClientes.xss">
       <DependentUpon>DsClientes.xsd</DependentUpon>
+    </None>
+    <None Include="dsClientesFalcon.xsc">
+      <DependentUpon>dsClientesFalcon.xsd</DependentUpon>
+    </None>
+    <None Include="dsClientesFalcon.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsClientesFalcon.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsClientesFalcon.xss">
+      <DependentUpon>dsClientesFalcon.xsd</DependentUpon>
     </None>
     <None Include="DsClientesOros.xsc">
       <DependentUpon>DsClientesOros.xsd</DependentUpon>
