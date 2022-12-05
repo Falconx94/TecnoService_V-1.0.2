@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows.Forms;
 
 namespace Tecnoservice.Class
 {
@@ -25,7 +26,30 @@ namespace Tecnoservice.Class
         {
             cmd = new SqlCommand("", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "SP_Dispositivo";
+            cmd.CommandText = "SP_Dispositivos";
+
+            cmd.Parameters.AddWithValue("@OP", 1);
+            cmd.Parameters.AddWithValue("@dis_Id", Dis_Id);
+            cmd.Parameters.AddWithValue("@dis_CltID",Dis_CltId);
+            cmd.Parameters.AddWithValue("@dis_Marca",Dis_Marca);
+            cmd.Parameters.AddWithValue("@dis_Modelo",Dis_Modelo);
+            cmd.Parameters.AddWithValue("@dis_IMEI",Dis_Imei);
+            cmd.Parameters.AddWithValue("@dis_Problema",Dis_Detalles);
+            cmd.Parameters.AddWithValue("@dis_Estado", Dis_Estado);
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                band = true;
+            }
+            catch (Exception ex)
+            {
+                band = false;
+                MessageBox.Show("Error al guardar los datos =>" + ex);
+            }
+            con.Close();
+
             return band;
         }
     }

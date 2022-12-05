@@ -20,6 +20,7 @@ Create table Dispositivo
 	Ds_Modelo varchar(50) not null,
 	Ds_Problema varchar(200) not null,
 	Ds_IMEI varchar(15)not null,
+	Ds_Estadom char(1),
 	Foreign Key (Clt_Id) References Clientes(Clt_Id)
 );
 Create table Proveedores
@@ -154,6 +155,4 @@ Create Table Abonos
 	Foreign Key (Clt_Id) References Clientes (Clt_Id)
 );
 
--
-
-delete from Clientes Where Clt_Id = 4
+--delete from Clientes Where Clt_Id = 4
