@@ -62,23 +62,38 @@ namespace Tecnoservice.Formas
             this.servicioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsServicios = new Tecnoservice.dsServicios();
             this.servicioTableAdapter = new Tecnoservice.dsServiciosTableAdapters.ServicioTableAdapter();
+            this.dtgClientes = new System.Windows.Forms.DataGridView();
+            this.cltIdDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltNombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltApPaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltApMaternoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltTelefonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cltEstatusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dSClientesFalcon = new Tecnoservice.DSClientesFalcon();
+            this.clientesTableAdapter = new Tecnoservice.DSClientesFalconTableAdapters.ClientesTableAdapter();
+            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.servicioBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsServicios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSClientesFalcon)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(28, 242);
+            this.txtPrecio.Location = new System.Drawing.Point(28, 302);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(139, 20);
             this.txtPrecio.TabIndex = 20;
             // 
             // txtCltId
             // 
-            this.txtCltId.Location = new System.Drawing.Point(28, 129);
+            this.txtCltId.Location = new System.Drawing.Point(28, 123);
             this.txtCltId.Name = "txtCltId";
             this.txtCltId.Size = new System.Drawing.Size(100, 20);
             this.txtCltId.TabIndex = 18;
@@ -100,7 +115,7 @@ namespace Tecnoservice.Formas
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 218);
+            this.label6.Location = new System.Drawing.Point(25, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
             this.label6.TabIndex = 15;
@@ -109,7 +124,7 @@ namespace Tecnoservice.Formas
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 163);
+            this.label5.Location = new System.Drawing.Point(25, 230);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 14;
@@ -127,7 +142,7 @@ namespace Tecnoservice.Formas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 109);
+            this.label2.Location = new System.Drawing.Point(25, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 12;
@@ -186,23 +201,23 @@ namespace Tecnoservice.Formas
             this.Cbox_TipoServicio.Items.AddRange(new object[] {
             "Reparación de equipo",
             "Venta de producto"});
-            this.Cbox_TipoServicio.Location = new System.Drawing.Point(28, 186);
+            this.Cbox_TipoServicio.Location = new System.Drawing.Point(28, 252);
             this.Cbox_TipoServicio.Name = "Cbox_TipoServicio";
             this.Cbox_TipoServicio.Size = new System.Drawing.Size(139, 21);
             this.Cbox_TipoServicio.TabIndex = 22;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(28, 305);
+            this.txtDescripcion.Location = new System.Drawing.Point(28, 361);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(168, 41);
+            this.txtDescripcion.Size = new System.Drawing.Size(188, 60);
             this.txtDescripcion.TabIndex = 24;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 281);
+            this.label4.Location = new System.Drawing.Point(25, 335);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 13);
             this.label4.TabIndex = 23;
@@ -276,11 +291,13 @@ namespace Tecnoservice.Formas
             this.svFechaDataGridViewTextBoxColumn,
             this.svEstadoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.servicioBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(432, 54);
+            this.dataGridView1.Location = new System.Drawing.Point(432, 242);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(745, 292);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(745, 179);
             this.dataGridView1.TabIndex = 27;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // svIdDataGridViewTextBoxColumn
             // 
@@ -345,11 +362,109 @@ namespace Tecnoservice.Formas
             // 
             this.servicioTableAdapter.ClearBeforeFill = true;
             // 
+            // dtgClientes
+            // 
+            this.dtgClientes.AllowUserToAddRows = false;
+            this.dtgClientes.AllowUserToDeleteRows = false;
+            this.dtgClientes.AutoGenerateColumns = false;
+            this.dtgClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cltIdDataGridViewTextBoxColumn1,
+            this.cltNombreDataGridViewTextBoxColumn,
+            this.cltApPaternoDataGridViewTextBoxColumn,
+            this.cltApMaternoDataGridViewTextBoxColumn,
+            this.cltTelefonoDataGridViewTextBoxColumn,
+            this.cltEstatusDataGridViewTextBoxColumn});
+            this.dtgClientes.DataSource = this.clientesBindingSource;
+            this.dtgClientes.Location = new System.Drawing.Point(432, 54);
+            this.dtgClientes.Name = "dtgClientes";
+            this.dtgClientes.ReadOnly = true;
+            this.dtgClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgClientes.Size = new System.Drawing.Size(645, 167);
+            this.dtgClientes.TabIndex = 28;
+            this.dtgClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgClientes_CellDoubleClick);
+            // 
+            // cltIdDataGridViewTextBoxColumn1
+            // 
+            this.cltIdDataGridViewTextBoxColumn1.DataPropertyName = "Clt_Id";
+            this.cltIdDataGridViewTextBoxColumn1.HeaderText = "Id de CLiente";
+            this.cltIdDataGridViewTextBoxColumn1.Name = "cltIdDataGridViewTextBoxColumn1";
+            this.cltIdDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // cltNombreDataGridViewTextBoxColumn
+            // 
+            this.cltNombreDataGridViewTextBoxColumn.DataPropertyName = "Clt_Nombre";
+            this.cltNombreDataGridViewTextBoxColumn.HeaderText = "Nombre Cliente";
+            this.cltNombreDataGridViewTextBoxColumn.Name = "cltNombreDataGridViewTextBoxColumn";
+            this.cltNombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cltApPaternoDataGridViewTextBoxColumn
+            // 
+            this.cltApPaternoDataGridViewTextBoxColumn.DataPropertyName = "Clt_Ap_Paterno";
+            this.cltApPaternoDataGridViewTextBoxColumn.HeaderText = "Ap. Paterno del cliente";
+            this.cltApPaternoDataGridViewTextBoxColumn.Name = "cltApPaternoDataGridViewTextBoxColumn";
+            this.cltApPaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cltApMaternoDataGridViewTextBoxColumn
+            // 
+            this.cltApMaternoDataGridViewTextBoxColumn.DataPropertyName = "Clt_Ap_Materno";
+            this.cltApMaternoDataGridViewTextBoxColumn.HeaderText = "Ap. Materno del cliente";
+            this.cltApMaternoDataGridViewTextBoxColumn.Name = "cltApMaternoDataGridViewTextBoxColumn";
+            this.cltApMaternoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cltTelefonoDataGridViewTextBoxColumn
+            // 
+            this.cltTelefonoDataGridViewTextBoxColumn.DataPropertyName = "Clt_Telefono";
+            this.cltTelefonoDataGridViewTextBoxColumn.HeaderText = "Teléfono del cliente";
+            this.cltTelefonoDataGridViewTextBoxColumn.Name = "cltTelefonoDataGridViewTextBoxColumn";
+            this.cltTelefonoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cltEstatusDataGridViewTextBoxColumn
+            // 
+            this.cltEstatusDataGridViewTextBoxColumn.DataPropertyName = "Clt_Estatus";
+            this.cltEstatusDataGridViewTextBoxColumn.HeaderText = "Estatus del cliente";
+            this.cltEstatusDataGridViewTextBoxColumn.Name = "cltEstatusDataGridViewTextBoxColumn";
+            this.cltEstatusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // clientesBindingSource
+            // 
+            this.clientesBindingSource.DataMember = "Clientes";
+            this.clientesBindingSource.DataSource = this.dSClientesFalcon;
+            // 
+            // dSClientesFalcon
+            // 
+            this.dSClientesFalcon.DataSetName = "DSClientesFalcon";
+            this.dSClientesFalcon.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientesTableAdapter
+            // 
+            this.clientesTableAdapter.ClearBeforeFill = true;
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(28, 172);
+            this.txtCliente.Multiline = true;
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(139, 49);
+            this.txtCliente.TabIndex = 30;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(25, 154);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Cliente";
+            // 
             // Servicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1209, 380);
+            this.ClientSize = new System.Drawing.Size(1209, 446);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.dtgClientes);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
@@ -378,6 +493,9 @@ namespace Tecnoservice.Formas
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.servicioBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsServicios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgClientes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSClientesFalcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,5 +535,17 @@ namespace Tecnoservice.Formas
         private System.Windows.Forms.DataGridViewTextBoxColumn svDescripcionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn svFechaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn svEstadoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dtgClientes;
+        private DSClientesFalcon dSClientesFalcon;
+        private System.Windows.Forms.BindingSource clientesBindingSource;
+        private DSClientesFalconTableAdapters.ClientesTableAdapter clientesTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltIdDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltNombreDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltApPaternoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltApMaternoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltTelefonoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cltEstatusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Label label8;
     }
 }

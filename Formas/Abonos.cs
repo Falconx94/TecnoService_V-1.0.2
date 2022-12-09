@@ -27,5 +27,10 @@ namespace Tecnoservice.Formas
             Form Menu = new Menu_Principal();
             Menu.Show();
         }
+
+        private void Abonos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

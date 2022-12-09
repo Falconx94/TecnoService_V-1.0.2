@@ -85,5 +85,7 @@ namespace Tecnoservice.Formas
             lblhora.Text = DateTime.Now.ToShortTimeString();
             lblfecha.Text = DateTime.Now.ToLongDateString();
         }
+
+
     }
 }

@@ -50,10 +50,11 @@ namespace Tecnoservice.Formas
             this.dsIMEIDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dsEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dispositivoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsDispositivosFalcon = new Tecnoservice.dsDispositivosFalcon();
+            this.dS_DispositivosFalcon = new Tecnoservice.DS_DispositivosFalcon();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnGuardar = new System.Windows.Forms.ToolStripButton();
             this.btnDeleteActive = new System.Windows.Forms.ToolStripLabel();
+            this.btnLimpiar = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Radbtn_Inactivo = new System.Windows.Forms.RadioButton();
             this.Radbtn_Activo = new System.Windows.Forms.RadioButton();
@@ -69,10 +70,12 @@ namespace Tecnoservice.Formas
             this.clientesTableAdapter = new Tecnoservice.dsClientesFalconTableAdapters.ClientesTableAdapter();
             this.txtCltID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dispositivoTableAdapter = new Tecnoservice.dsDispositivosFalconTableAdapters.DispositivoTableAdapter();
+            this.txtNameCliente = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dispositivoTableAdapter = new Tecnoservice.DS_DispositivosFalconTableAdapters.DispositivoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.DTG_Dispositivo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dispositivoBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsDispositivosFalcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DispositivosFalcon)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DTG_Cliente)).BeginInit();
@@ -82,16 +85,18 @@ namespace Tecnoservice.Formas
             // 
             // txtIMEIDispo
             // 
-            this.txtIMEIDispo.Location = new System.Drawing.Point(45, 290);
+            this.txtIMEIDispo.Location = new System.Drawing.Point(32, 315);
+            this.txtIMEIDispo.MaxLength = 15;
             this.txtIMEIDispo.Name = "txtIMEIDispo";
             this.txtIMEIDispo.Size = new System.Drawing.Size(207, 20);
             this.txtIMEIDispo.TabIndex = 4;
+            this.txtIMEIDispo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIMEIDispo_KeyPress);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(43, 265);
+            this.label10.Location = new System.Drawing.Point(30, 290);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(152, 20);
             this.label10.TabIndex = 34;
@@ -99,7 +104,7 @@ namespace Tecnoservice.Formas
             // 
             // txtModeloDispo
             // 
-            this.txtModeloDispo.Location = new System.Drawing.Point(45, 240);
+            this.txtModeloDispo.Location = new System.Drawing.Point(32, 267);
             this.txtModeloDispo.Name = "txtModeloDispo";
             this.txtModeloDispo.Size = new System.Drawing.Size(207, 20);
             this.txtModeloDispo.TabIndex = 3;
@@ -108,7 +113,7 @@ namespace Tecnoservice.Formas
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(43, 215);
+            this.label9.Location = new System.Drawing.Point(30, 242);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(170, 20);
             this.label9.TabIndex = 32;
@@ -116,7 +121,7 @@ namespace Tecnoservice.Formas
             // 
             // txtMarcaDispo
             // 
-            this.txtMarcaDispo.Location = new System.Drawing.Point(45, 187);
+            this.txtMarcaDispo.Location = new System.Drawing.Point(32, 219);
             this.txtMarcaDispo.Name = "txtMarcaDispo";
             this.txtMarcaDispo.Size = new System.Drawing.Size(207, 20);
             this.txtMarcaDispo.TabIndex = 2;
@@ -125,7 +130,7 @@ namespace Tecnoservice.Formas
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(43, 161);
+            this.label8.Location = new System.Drawing.Point(28, 196);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(162, 20);
             this.label8.TabIndex = 30;
@@ -133,17 +138,17 @@ namespace Tecnoservice.Formas
             // 
             // txtDetDispositivo
             // 
-            this.txtDetDispositivo.Location = new System.Drawing.Point(45, 345);
+            this.txtDetDispositivo.Location = new System.Drawing.Point(32, 371);
             this.txtDetDispositivo.Multiline = true;
             this.txtDetDispositivo.Name = "txtDetDispositivo";
-            this.txtDetDispositivo.Size = new System.Drawing.Size(207, 80);
+            this.txtDetDispositivo.Size = new System.Drawing.Size(207, 54);
             this.txtDetDispositivo.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(43, 318);
+            this.label4.Location = new System.Drawing.Point(28, 338);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(176, 20);
             this.label4.TabIndex = 28;
@@ -151,7 +156,7 @@ namespace Tecnoservice.Formas
             // 
             // txtIdDispositivo
             // 
-            this.txtIdDispositivo.Location = new System.Drawing.Point(45, 78);
+            this.txtIdDispositivo.Location = new System.Drawing.Point(32, 72);
             this.txtIdDispositivo.Name = "txtIdDispositivo";
             this.txtIdDispositivo.Size = new System.Drawing.Size(207, 20);
             this.txtIdDispositivo.TabIndex = 0;
@@ -160,7 +165,7 @@ namespace Tecnoservice.Formas
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 49);
+            this.label5.Location = new System.Drawing.Point(28, 43);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 20);
             this.label5.TabIndex = 27;
@@ -181,11 +186,13 @@ namespace Tecnoservice.Formas
             this.dsIMEIDataGridViewTextBoxColumn,
             this.dsEstadoDataGridViewTextBoxColumn});
             this.DTG_Dispositivo.DataSource = this.dispositivoBindingSource;
-            this.DTG_Dispositivo.Location = new System.Drawing.Point(273, 253);
+            this.DTG_Dispositivo.Location = new System.Drawing.Point(260, 253);
             this.DTG_Dispositivo.Name = "DTG_Dispositivo";
             this.DTG_Dispositivo.ReadOnly = true;
-            this.DTG_Dispositivo.Size = new System.Drawing.Size(762, 172);
+            this.DTG_Dispositivo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DTG_Dispositivo.Size = new System.Drawing.Size(697, 172);
             this.DTG_Dispositivo.TabIndex = 35;
+            this.DTG_Dispositivo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DTG_Dispositivo_CellDoubleClick);
             // 
             // dsIdDataGridViewTextBoxColumn
             // 
@@ -204,21 +211,21 @@ namespace Tecnoservice.Formas
             // dsMarcaDataGridViewTextBoxColumn
             // 
             this.dsMarcaDataGridViewTextBoxColumn.DataPropertyName = "Ds_Marca";
-            this.dsMarcaDataGridViewTextBoxColumn.HeaderText = "Marca";
+            this.dsMarcaDataGridViewTextBoxColumn.HeaderText = "Marca del Dispositivo";
             this.dsMarcaDataGridViewTextBoxColumn.Name = "dsMarcaDataGridViewTextBoxColumn";
             this.dsMarcaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dsModeloDataGridViewTextBoxColumn
             // 
             this.dsModeloDataGridViewTextBoxColumn.DataPropertyName = "Ds_Modelo";
-            this.dsModeloDataGridViewTextBoxColumn.HeaderText = "Modelo";
+            this.dsModeloDataGridViewTextBoxColumn.HeaderText = "Modelo del Dispositivo";
             this.dsModeloDataGridViewTextBoxColumn.Name = "dsModeloDataGridViewTextBoxColumn";
             this.dsModeloDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dsProblemaDataGridViewTextBoxColumn
             // 
             this.dsProblemaDataGridViewTextBoxColumn.DataPropertyName = "Ds_Problema";
-            this.dsProblemaDataGridViewTextBoxColumn.HeaderText = "Problema/Detalles";
+            this.dsProblemaDataGridViewTextBoxColumn.HeaderText = "Problemas del Dispositivos";
             this.dsProblemaDataGridViewTextBoxColumn.Name = "dsProblemaDataGridViewTextBoxColumn";
             this.dsProblemaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -232,28 +239,29 @@ namespace Tecnoservice.Formas
             // dsEstadoDataGridViewTextBoxColumn
             // 
             this.dsEstadoDataGridViewTextBoxColumn.DataPropertyName = "Ds_Estado";
-            this.dsEstadoDataGridViewTextBoxColumn.HeaderText = "Estado";
+            this.dsEstadoDataGridViewTextBoxColumn.HeaderText = "Estado del Dispositivo";
             this.dsEstadoDataGridViewTextBoxColumn.Name = "dsEstadoDataGridViewTextBoxColumn";
             this.dsEstadoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dispositivoBindingSource
             // 
             this.dispositivoBindingSource.DataMember = "Dispositivo";
-            this.dispositivoBindingSource.DataSource = this.dsDispositivosFalcon;
+            this.dispositivoBindingSource.DataSource = this.dS_DispositivosFalcon;
             // 
-            // dsDispositivosFalcon
+            // dS_DispositivosFalcon
             // 
-            this.dsDispositivosFalcon.DataSetName = "dsDispositivosFalcon";
-            this.dsDispositivosFalcon.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dS_DispositivosFalcon.DataSetName = "DS_DispositivosFalcon";
+            this.dS_DispositivosFalcon.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnGuardar,
-            this.btnDeleteActive});
+            this.btnDeleteActive,
+            this.btnLimpiar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1086, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(999, 25);
             this.toolStrip1.TabIndex = 36;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -274,12 +282,23 @@ namespace Tecnoservice.Formas
             this.btnDeleteActive.Size = new System.Drawing.Size(50, 22);
             this.btnDeleteActive.Tag = "9";
             this.btnDeleteActive.Text = "Eliminar";
+            this.btnDeleteActive.Click += new System.EventHandler(this.btnDeleteActive_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnLimpiar.Image = ((System.Drawing.Image)(resources.GetObject("btnLimpiar.Image")));
+            this.btnLimpiar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(51, 22);
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Radbtn_Inactivo);
             this.groupBox1.Controls.Add(this.Radbtn_Activo);
-            this.groupBox1.Location = new System.Drawing.Point(273, 43);
+            this.groupBox1.Location = new System.Drawing.Point(260, 43);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(207, 55);
             this.groupBox1.TabIndex = 39;
@@ -322,12 +341,13 @@ namespace Tecnoservice.Formas
             this.cltTelefonoDataGridViewTextBoxColumn,
             this.cltEstatusDataGridViewTextBoxColumn});
             this.DTG_Cliente.DataSource = this.clientesBindingSource;
-            this.DTG_Cliente.Location = new System.Drawing.Point(273, 109);
+            this.DTG_Cliente.Location = new System.Drawing.Point(260, 109);
             this.DTG_Cliente.Name = "DTG_Cliente";
             this.DTG_Cliente.ReadOnly = true;
-            this.DTG_Cliente.Size = new System.Drawing.Size(661, 126);
+            this.DTG_Cliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DTG_Cliente.Size = new System.Drawing.Size(607, 126);
             this.DTG_Cliente.TabIndex = 40;
-            this.DTG_Cliente.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DTG_Cliente_CellContentDoubleClick);
+            this.DTG_Cliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DTG_Cliente_CellDoubleClick);
             // 
             // cltIdDataGridViewTextBoxColumn1
             // 
@@ -387,7 +407,7 @@ namespace Tecnoservice.Formas
             // 
             // txtCltID
             // 
-            this.txtCltID.Location = new System.Drawing.Point(43, 135);
+            this.txtCltID.Location = new System.Drawing.Point(32, 125);
             this.txtCltID.Name = "txtCltID";
             this.txtCltID.Size = new System.Drawing.Size(207, 20);
             this.txtCltID.TabIndex = 1;
@@ -396,11 +416,28 @@ namespace Tecnoservice.Formas
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 109);
+            this.label2.Location = new System.Drawing.Point(28, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 20);
             this.label2.TabIndex = 42;
             this.label2.Text = "Id de Cliente:";
+            // 
+            // txtNameCliente
+            // 
+            this.txtNameCliente.Location = new System.Drawing.Point(32, 173);
+            this.txtNameCliente.Name = "txtNameCliente";
+            this.txtNameCliente.Size = new System.Drawing.Size(207, 20);
+            this.txtNameCliente.TabIndex = 43;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(28, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 20);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "Cliente:";
             // 
             // dispositivoTableAdapter
             // 
@@ -410,7 +447,9 @@ namespace Tecnoservice.Formas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 450);
+            this.ClientSize = new System.Drawing.Size(999, 450);
+            this.Controls.Add(this.txtNameCliente);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCltID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DTG_Cliente);
@@ -434,7 +473,7 @@ namespace Tecnoservice.Formas
             this.Load += new System.EventHandler(this.Dispositivo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DTG_Dispositivo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dispositivoBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsDispositivosFalcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS_DispositivosFalcon)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -478,9 +517,11 @@ namespace Tecnoservice.Formas
         private System.Windows.Forms.DataGridViewTextBoxColumn cltEstatusDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txtCltID;
         private System.Windows.Forms.Label label2;
-        private dsDispositivosFalcon dsDispositivosFalcon;
+        private System.Windows.Forms.TextBox txtNameCliente;
+        private System.Windows.Forms.Label label1;
+        private DS_DispositivosFalcon dS_DispositivosFalcon;
         private System.Windows.Forms.BindingSource dispositivoBindingSource;
-        private dsDispositivosFalconTableAdapters.DispositivoTableAdapter dispositivoTableAdapter;
+        private DS_DispositivosFalconTableAdapters.DispositivoTableAdapter dispositivoTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn dsIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cltIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dsMarcaDataGridViewTextBoxColumn;
@@ -488,5 +529,6 @@ namespace Tecnoservice.Formas
         private System.Windows.Forms.DataGridViewTextBoxColumn dsProblemaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dsIMEIDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dsEstadoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripButton btnLimpiar;
     }
 }

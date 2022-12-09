@@ -30,7 +30,6 @@ namespace Tecnoservice.Formas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnAbonos = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnCompras = new System.Windows.Forms.Button();
             this.btnDispositivo = new System.Windows.Forms.Button();
@@ -42,17 +41,6 @@ namespace Tecnoservice.Formas
             this.horafecha = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // btnAbonos
-            // 
-            this.btnAbonos.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbonos.Location = new System.Drawing.Point(67, 115);
-            this.btnAbonos.Name = "btnAbonos";
-            this.btnAbonos.Size = new System.Drawing.Size(170, 56);
-            this.btnAbonos.TabIndex = 0;
-            this.btnAbonos.Text = "Abonos";
-            this.btnAbonos.UseVisualStyleBackColor = true;
-            this.btnAbonos.Click += new System.EventHandler(this.btnAbonos_Click);
             // 
             // btnClientes
             // 
@@ -79,7 +67,7 @@ namespace Tecnoservice.Formas
             // btnDispositivo
             // 
             this.btnDispositivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDispositivo.Location = new System.Drawing.Point(194, 311);
+            this.btnDispositivo.Location = new System.Drawing.Point(67, 115);
             this.btnDispositivo.Name = "btnDispositivo";
             this.btnDispositivo.Size = new System.Drawing.Size(170, 56);
             this.btnDispositivo.TabIndex = 3;
@@ -125,7 +113,7 @@ namespace Tecnoservice.Formas
             this.lblhora.AutoSize = true;
             this.lblhora.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblhora.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.lblhora.Location = new System.Drawing.Point(182, 383);
+            this.lblhora.Location = new System.Drawing.Point(203, 407);
             this.lblhora.Name = "lblhora";
             this.lblhora.Size = new System.Drawing.Size(107, 46);
             this.lblhora.TabIndex = 7;
@@ -136,7 +124,7 @@ namespace Tecnoservice.Formas
             this.lblfecha.AutoSize = true;
             this.lblfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfecha.ForeColor = System.Drawing.Color.SlateGray;
-            this.lblfecha.Location = new System.Drawing.Point(83, 453);
+            this.lblfecha.Location = new System.Drawing.Point(81, 498);
             this.lblfecha.Name = "lblfecha";
             this.lblfecha.Size = new System.Drawing.Size(90, 31);
             this.lblfecha.TabIndex = 8;
@@ -172,7 +160,6 @@ namespace Tecnoservice.Formas
             this.Controls.Add(this.btnDispositivo);
             this.Controls.Add(this.btnCompras);
             this.Controls.Add(this.btnClientes);
-            this.Controls.Add(this.btnAbonos);
             this.Name = "Menu_Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu Principal";
@@ -183,8 +170,6 @@ namespace Tecnoservice.Formas
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAbonos;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnCompras;
         private System.Windows.Forms.Button btnDispositivo;

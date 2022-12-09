@@ -22,7 +22,7 @@ namespace Tecnoservice.Formas
         //Dispositivo dispo = new Dispositivo();
         bool band1 = false, band2 = false;
         char estado;
-        string Conex;
+        string Conex,query;
 
         public Clientes()
         {
@@ -32,9 +32,6 @@ namespace Tecnoservice.Formas
         }
         private void Clientes_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dsClientesOros.Clientes' Puede moverla o quitarla según sea necesario.
-            //this.clientesTableAdapter1.Fill(this.dsClientesOros.Clientes);
-            // TODO: esta línea de código carga datos en la tabla 'dsClientes.Clientes' Puede moverla o quitarla según sea necesario.
             Actualiza_Datagrid();
             Consecutivo();
         }
@@ -43,18 +40,22 @@ namespace Tecnoservice.Formas
             //this.clientesTableAdapter1.Fill(this.dsClientesOros.Clientes);
             this.clientesTableAdapter.Fill(this.dsClientes.Clientes);
         }
+        public void Set_Data()
+        {
+            clsclt.Clt_Id = Convert.ToInt32(txtID.Text);
+            clsclt.Clt_Nombre = txtNombre.Text;
+            clsclt.Clt_Ap_Paterno = txtAp_Paterno.Text;
+            clsclt.Clt_Ap_Materno = txtAp_Materno.Text;
+            clsclt.Clt_Telefono = txtTelefono.Text;
+            clsclt.Clt_Estatus = estado;
+        }
         public void GuardarCliente()
         {
+            Set_Data();
             if (valida_info())
             {
                 Valida_estado();
-                //MANDA A LLAMAR A LA CLASE Cls_Cliente PARA GUARDAR 
-                clsclt.Clt_Id = Convert.ToInt32(txtID.Text);
-                clsclt.Clt_Nombre = txtNombre.Text;
-                clsclt.Clt_Ap_Paterno = txtAp_Paterno.Text;
-                clsclt.Clt_Ap_Materno = txtAp_Materno.Text;
-                clsclt.Clt_Telefono = txtTelefono.Text;
-                clsclt.Clt_Estatus = estado;
+                
                 if (clsclt.Guardar())
                 {
                     MessageBox.Show("Datos guardados exitosamente");
@@ -95,28 +96,138 @@ namespace Tecnoservice.Formas
         }
         public void Eliminar()
         {
+            Set_Data();
             if (valida_info())
             {
-                clsclt.Clt_Id = Convert.ToInt32(txtID.Text);
-                clsclt.Clt_Nombre = txtNombre.Text;
-                clsclt.Clt_Ap_Paterno = txtAp_Paterno.Text;
-                clsclt.Clt_Ap_Materno = txtAp_Materno.Text;
-                clsclt.Clt_Telefono = txtTelefono.Text;
-                clsclt.Clt_Estatus = estado;
-                if (clsclt.Eliminar())
+                if (comparayelimina_servicio())
                 {
-                    MessageBox.Show("Datos eliminados exitosamente");
-                }
-                else
-                {
-                    MessageBox.Show("Los datos no se eliminaron");
+                    if (comparayelimina_dispositivo())
+                    {
+                        if (comparayelimina_abonos())
+                        {
+                            if (comparayelimina_ventas())
+                            {
+                                if (clsclt.Eliminar())
+                                {
+                                    MessageBox.Show("Datos eliminados exitosamente");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Los datos no se eliminaron");
+                                }
+                            }
+                        }
+                    }
                 }
                 con.Close();
                 Consecutivo();
-                Actualiza_Datagrid();
             }
+            Actualiza_Datagrid();
         }
-
+        public bool comparayelimina_ventas()
+        {
+            query = "Select Clt_id from Ventas where Clt_id = " + clsclt.Clt_Id;
+            cmd = new SqlCommand(query, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                try
+                {
+                    con.Close();
+                    query = "Delete from Ventas where Clt_Id =" + clsclt.Clt_Id;
+                    cmd = new SqlCommand(query, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    band2 = true;
+                }
+                catch (Exception ex)
+                {
+                    band2 = false;
+                    MessageBox.Show("Error al borrar los datos =>" + ex);
+                }
+            }
+            con.Close();
+            return band1;
+        }
+        public bool comparayelimina_abonos()
+        {
+            query = "Select Clt_id from Abonos where Clt_id = " + clsclt.Clt_Id;
+            cmd = new SqlCommand(query, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                try
+                {
+                    con.Close();
+                    query = "Delete from Abonos where Clt_Id =" + clsclt.Clt_Id;
+                    cmd = new SqlCommand(query, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    band2 = true;
+                }
+                catch (Exception ex)
+                {
+                    band2 = false;
+                    MessageBox.Show("Error al borrar los datos =>" + ex);
+                }
+            }
+            con.Close();
+            return band1;
+        }
+        public bool comparayelimina_dispositivo()
+        {
+            query = "Select Clt_id from Dispositivo where Clt_id = " + clsclt.Clt_Id;
+            cmd = new SqlCommand(query, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                try
+                {
+                    con.Close();
+                    query = "Delete from Dispositivo where Clt_Id =" + clsclt.Clt_Id;
+                    cmd = new SqlCommand(query, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    band2 = true;
+                }
+                catch (Exception ex)
+                {
+                    band2 = false;
+                    MessageBox.Show("Error al borrar los datos =>" + ex);
+                }
+            }
+            con.Close();
+            return band1;
+        }
+        public bool comparayelimina_servicio()
+        {
+            query = "Select Clt_id from Servicio where Clt_id = "+clsclt.Clt_Id;
+            cmd = new SqlCommand(query, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                try
+                { 
+                    con.Close();
+                    query = "Delete from Servicio where Clt_Id =" + clsclt.Clt_Id;
+                    cmd = new SqlCommand(query, con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    band2 = true;
+                }
+                catch (Exception ex)
+                {
+                    band2 = false;
+                    MessageBox.Show("Error al borrar los datos =>" + ex);
+                }
+            }
+            con.Close();
+            return band2;
+        }
         public void Limpiar()
         {
             txtID.Text = "";
@@ -127,7 +238,6 @@ namespace Tecnoservice.Formas
             Consecutivo();
             Actualiza_Datagrid();
         }
-
         public void Consecutivo()
         {
             cmd = new SqlCommand("SELECT ISNULL(MAX(Clt_Id),0) + 1 FROM Clientes", con);
@@ -146,37 +256,16 @@ namespace Tecnoservice.Formas
             else
                 estado = 'I';
         }
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Armar();
             GuardarCliente();
             Limpiar();
         }
-
-        private void btnDeleteActive_Click(object sender, EventArgs e)
-        {
-            Desarrmar();
-            txtID.Enabled = true;
-            btnDelete.Visible = true;
-            txtNombre.Enabled = false;
-            txtAp_Paterno.Enabled = false;
-            txtAp_Materno.Enabled = false;
-            txtTelefono.Enabled = false;
-        }
-        private void btnDispositivo_Click(object sender, EventArgs e)
-        {
-            //dispo.ShowDialog();
-        }
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             Armar();
             Actualizar();
-            Limpiar();
-        }
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            Eliminar();
             Limpiar();
         }
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -206,24 +295,15 @@ namespace Tecnoservice.Formas
             Form Menu = new Menu_Principal();
             Menu.Show();
         }
-
         private void Radbtn_Activo_Click(object sender, EventArgs e)
         {
-            if (Radbtn_Activo.Checked)
-            {
-                Radbtn_Inactivo.Checked = band1;
-                band2 = true;
-            }
-            else
-            {
-                Radbtn_Activo.Checked = band1;
-                band2 = false;
-            }
-        }
+            if (Radbtn_Activo.Checked == true) band2 = true;
+            else band2 = false;
 
+        }
         public bool valida_info()
         {
-            if (txtNombre.Text == "" || txtAp_Paterno.Text == "" || txtAp_Materno.Text == "" || txtTelefono.Text == "")
+            if (txtNombre.Text == "" || txtAp_Paterno.Text == "" || txtTelefono.Text == "")
             {
                 MessageBox.Show("Verificar que los datos esten llenos");
                 band1 = false;
@@ -231,27 +311,34 @@ namespace Tecnoservice.Formas
             else band1 = true;
             return band1;
         }
-
-        public void Desarrmar()
+        private void btnDeleteActive_Click(object sender, EventArgs e)
         {
             txtID.Enabled = true;
-            btnDelete.Visible = true;
             txtNombre.Enabled = false;
             txtAp_Paterno.Enabled = false;
             txtAp_Materno.Enabled = false;
             txtTelefono.Enabled = false;
+            Eliminar();
+            Armar();
+            Limpiar();
         }
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
 
+        }
         public void Armar()
         {
-            txtID.Enabled = false;
-            btnDelete.Visible = false;
+            txtID.Enabled = true;
             txtNombre.Enabled = true;
             txtAp_Paterno.Enabled = true;
             txtAp_Materno.Enabled = true;
             txtTelefono.Enabled = true;
         }
-
-
     }
 }

@@ -52,5 +52,35 @@ namespace Tecnoservice.Class
 
             return band;
         }
+        public bool Eliminar()
+        {
+            cmd = new SqlCommand("", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "SP_Dispositivos";
+
+            cmd.Parameters.AddWithValue("@OP", 2);
+            cmd.Parameters.AddWithValue("@dis_Id", Dis_Id);
+            cmd.Parameters.AddWithValue("@dis_CltID", Dis_CltId);
+            cmd.Parameters.AddWithValue("@dis_Marca", Dis_Marca);
+            cmd.Parameters.AddWithValue("@dis_Modelo", Dis_Modelo);
+            cmd.Parameters.AddWithValue("@dis_IMEI", Dis_Imei);
+            cmd.Parameters.AddWithValue("@dis_Problema", Dis_Detalles);
+            cmd.Parameters.AddWithValue("@dis_Estado", Dis_Estado);
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                band = true;
+            }
+            catch (Exception ex)
+            {
+                band = false;
+                MessageBox.Show("Error al eliminar los datos =>" + ex);
+            }
+            con.Close();
+
+            return band;
+        }
     }
 }

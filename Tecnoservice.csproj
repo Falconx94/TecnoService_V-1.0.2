@@ -64,6 +64,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsClientesFalcon.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DSClientesFalcon1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSClientesFalcon1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DsClientesOros.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,10 +89,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DsProveedores.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dsProveedoresFalcon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsProveedoresFalcon.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DSProveedoresFalcon1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSProveedoresFalcon1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dsServicios.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsServicios.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS_DispositivosFalcon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_DispositivosFalcon.xsd</DependentUpon>
     </Compile>
     <Compile Include="Formas\Abonos.cs">
       <SubType>Form</SubType>
@@ -204,6 +224,17 @@
     <None Include="dsClientesFalcon.xss">
       <DependentUpon>dsClientesFalcon.xsd</DependentUpon>
     </None>
+    <None Include="DSClientesFalcon1.xsc">
+      <DependentUpon>DSClientesFalcon1.xsd</DependentUpon>
+    </None>
+    <None Include="DSClientesFalcon1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSClientesFalcon1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSClientesFalcon1.xss">
+      <DependentUpon>DSClientesFalcon1.xsd</DependentUpon>
+    </None>
     <None Include="DsClientesOros.xsc">
       <DependentUpon>DsClientesOros.xsd</DependentUpon>
     </None>
@@ -248,6 +279,28 @@
     <None Include="DsProveedores.xss">
       <DependentUpon>DsProveedores.xsd</DependentUpon>
     </None>
+    <None Include="dsProveedoresFalcon.xsc">
+      <DependentUpon>dsProveedoresFalcon.xsd</DependentUpon>
+    </None>
+    <None Include="dsProveedoresFalcon.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsProveedoresFalcon.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="dsProveedoresFalcon.xss">
+      <DependentUpon>dsProveedoresFalcon.xsd</DependentUpon>
+    </None>
+    <None Include="DSProveedoresFalcon1.xsc">
+      <DependentUpon>DSProveedoresFalcon1.xsd</DependentUpon>
+    </None>
+    <None Include="DSProveedoresFalcon1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSProveedoresFalcon1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DSProveedoresFalcon1.xss">
+      <DependentUpon>DSProveedoresFalcon1.xsd</DependentUpon>
+    </None>
     <None Include="dsServicios.xsc">
       <DependentUpon>dsServicios.xsd</DependentUpon>
     </None>
@@ -258,6 +311,17 @@
     </None>
     <None Include="dsServicios.xss">
       <DependentUpon>dsServicios.xsd</DependentUpon>
+    </None>
+    <None Include="DS_DispositivosFalcon.xsc">
+      <DependentUpon>DS_DispositivosFalcon.xsd</DependentUpon>
+    </None>
+    <None Include="DS_DispositivosFalcon.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_DispositivosFalcon.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_DispositivosFalcon.xss">
+      <DependentUpon>DS_DispositivosFalcon.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

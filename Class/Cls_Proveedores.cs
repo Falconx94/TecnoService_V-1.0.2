@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using Tecnoservice.Class;
+
 namespace Tecnoservice.Class
 {
     class Cls_Proveedores
     {
-        //BD_Conex scon = new BD_Conex();
-        //SqlDataReader dr;
         bool band;
 
         public int Prv_Id { get; set; }
@@ -87,7 +85,7 @@ namespace Tecnoservice.Class
             SqlCommand cmd = new SqlCommand("", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "SP_Proveedores";
-            cmd.Parameters.AddWithValue("@OP", 5);
+            cmd.Parameters.AddWithValue("@OP", 4);
             cmd.Parameters.AddWithValue("@Prov_Id",Prv_Id);
             cmd.Parameters.AddWithValue("@Prov_RasSoci", Prv_Razonsocial);
             cmd.Parameters.AddWithValue("@Prov_NomContac", Prv_Nombre_Contaco);

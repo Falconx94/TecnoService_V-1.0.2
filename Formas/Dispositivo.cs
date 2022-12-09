@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Tecnoservice.Class;
 using MessageBox = System.Windows.Forms.MessageBox;
 using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace Tecnoservice.Formas
 {
@@ -24,11 +25,24 @@ namespace Tecnoservice.Formas
         Cls_Dispositivo dsp = new Cls_Dispositivo();
         bool band1, band2;
         char estado;
-        int cliente;
-        //string sdconexion;
+        int idcliente;
+        string cliente,sql;
         public Dispositivo(string sconexion)
         {
             InitializeComponent();
+            Consecutivo();
+        }
+        public void Limpiar()
+        {
+            txtIdDispositivo.Text = "";
+            txtCltID.Text = "";
+            txtIdDispositivo.Text = "";
+            txtMarcaDispo.Text = "";
+            txtModeloDispo.Text = "";
+            txtIMEIDispo.Text = "";
+            txtDetDispositivo.Text = "";
+            txtNameCliente.Text = "";
+            Actualiza_Datagrid();
             Consecutivo();
         }
         public void Consecutivo()
@@ -42,32 +56,78 @@ namespace Tecnoservice.Formas
             }
             con.Close();
         }
+        public void Eliminar()
+        {
+            Set_Datos();
+            if (dsp.Eliminar())
+            {
+                MessageBox.Show("Datos eliminados exitosamente");
+            }
+            else
+            {
+                MessageBox.Show("Los datos no se eliminaron");
+            }
+            con.Close();
+            Limpiar();
+        }
+        public void Set_Datos()
+        {
+            dsp.Dis_Id = Convert.ToInt32(txtIdDispositivo.Text);
+            dsp.Dis_CltId = Convert.ToInt32(txtCltID.Text);
+            dsp.Dis_Marca = txtMarcaDispo.Text;
+            dsp.Dis_Modelo = txtModeloDispo.Text;
+            dsp.Dis_Imei = txtIMEIDispo.Text;
+            dsp.Dis_Detalles = txtDetDispositivo.Text;
+            dsp.Dis_Estado = estado;
+        }
         public void GuardarDispositivo()
         {
             if(Valida_Info())
-            { 
+            {
                 if (Valida_Cliente())
                 {
                     Valida_estado();
-                    dsp.Dis_Id = Convert.ToInt32(txtIdDispositivo.Text);
-                    dsp.Dis_CltId = Convert.ToInt32(txtCltID.Text);
-                    dsp.Dis_Marca = txtMarcaDispo.Text;
-                    dsp.Dis_Modelo = txtModeloDispo.Text;
-                    dsp.Dis_Imei = txtIMEIDispo.Text;
-                    dsp.Dis_Detalles = txtDetDispositivo.Text;
-                    dsp.Dis_Estado = estado;
-                    if (dsp.Guardar())
-                    {
-                        MessageBox.Show("Datos guardados exitosamente");
+                    Set_Datos();
+                    if (Valida_Imei())
+                    { 
+                        if (dsp.Guardar())
+                        {
+                            MessageBox.Show("Datos guardados exitosamente");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Los datos no se guardaron");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Los datos no se guardaron");
+                        DialogResult res = MessageBox.Show("El IMEI ingresado ya existe, desea actualizarlo??","Adevertencia",
+                        MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                        switch(res)
+                        {
+                            case DialogResult.Yes:
+                                if (dsp.Guardar())
+                                {
+                                    MessageBox.Show("Se cambiara el IMEI, datos guardados exitosamente");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Los datos no se guardaron");
+                                }
+                                break;
+                            case DialogResult.No:
+                                if (dsp.Guardar())
+                                {
+                                    MessageBox.Show("No se cambiara el IMEI, datos guardados exitosamente");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Los datos no se guardaron");
+                                }
+                                break;
+                        }
                     }
                     con.Close();
-                    Consecutivo();
-                    Actualiza_Datagrid();
-
                 }
                 else
                 {
@@ -80,11 +140,18 @@ namespace Tecnoservice.Formas
                 MessageBox.Show("Asegurese de que todos los campos estan llenados",
                     "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            Limpiar();
         }
         public bool Valida_Info()
         {
-            if (txtIdDispositivo.Text == "" || txtCltID.Text == "" || txtDetDispositivo.Text == "" || txtMarcaDispo.Text == "" || txtModeloDispo.Text == "")
-                band2 = false;
+            if (txtIdDispositivo.Text == "" || txtCltID.Text == "" || txtDetDispositivo.Text == ""
+                || txtMarcaDispo.Text == "" || txtModeloDispo.Text == "" || txtIMEIDispo.Text == "")
+            {
+                if (Radbtn_Activo.Checked == false && Radbtn_Inactivo.Checked == false)
+                    band2 = false;
+                if (Radbtn_Activo.Checked == true) band2 = true;
+                if (Radbtn_Inactivo.Checked == true) band2 = false;
+            }
             else
                 band2 = true;
             return band2;
@@ -111,14 +178,8 @@ namespace Tecnoservice.Formas
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             GuardarDispositivo();
-        }
-        public void Datos_Fijos()
-        {
-            txtIdDispositivo.Enabled = false;
-            txtDetDispositivo.Enabled = false;
-            txtIMEIDispo.Enabled = false;
-            txtMarcaDispo.Enabled = false;
-            txtModeloDispo.Enabled = false;
+            Actualiza_Datagrid();
+            Consecutivo();
         }
         private void Dispositivo_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -127,17 +188,21 @@ namespace Tecnoservice.Formas
         }
         private void Dispositivo_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dsDispositivosFalcon.Dispositivo' Puede moverla o quitarla según sea necesario.
-            this.dispositivoTableAdapter.Fill(this.dsDispositivosFalcon.Dispositivo);
             Actualiza_Datagrid();
         }
-        public void obtener_cliente()
+        public bool Valida_Imei()
         {
-            cliente = Convert.ToInt32(this.dsClientesFalcon.Clientes[clientesBindingSource.Position].Clt_Id.ToString());
+            sql = "Select Ds_IMEI from Dispositivo where Ds_IMEI = " + dsp.Dis_Imei;
+            cmd = new SqlCommand(sql, con);
+            con.Open();
+            dr = cmd.ExecuteReader();
+            if (dr.Read()) band1 = false;
+            else band1 = true;
+            return band1;
         }
         public void Dispositivos_Cliente()
         {
-            string sql = "Select * from Dispositivo where Clt_Id = " + cliente;
+            sql = "Select * from Dispositivo where Clt_Id = " + idcliente;
             cmd = new SqlCommand(sql, con);
             con.Open();
             dr = cmd.ExecuteReader();
@@ -154,18 +219,66 @@ namespace Tecnoservice.Formas
             }
             con.Close();
         }
-        private void DTG_Cliente_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public void obtener_cliente()
+        {
+            idcliente = Convert.ToInt32(this.dsClientesFalcon.Clientes[clientesBindingSource.Position].Clt_Id.ToString());
+            cliente = this.dsClientesFalcon.Clientes[clientesBindingSource.Position].Clt_Nombre;
+        }
+        private void DTG_Cliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             obtener_cliente();
-            txtCltID.Text = Convert.ToString(cliente);
+            txtCltID.Text = Convert.ToString(idcliente);
+            txtNameCliente.Text = cliente;
+            DTG_Dispositivo.DataSource = null;
+            dt.Clear();
+            DTG_Dispositivo.Refresh();
             Dispositivos_Cliente();
+        }
+        private void btnDeleteActive_Click(object sender, EventArgs e)
+        {
+            Eliminar();
+        }
+        private void txtIMEIDispo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+            Actualiza_Datagrid();
+        }
+        private void DTG_Dispositivo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtIdDispositivo.Text = this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Ds_Id.ToString();
+            txtCltID.Text = this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Clt_Id.ToString();
+            txtMarcaDispo.Text = this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Ds_Marca;
+            txtModeloDispo.Text = this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Ds_Modelo;
+            txtIMEIDispo.Text = this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Ds_IMEI.ToString();
+            txtDetDispositivo.Text = this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Ds_Problema;
+            estado = Convert.ToChar(this.dS_DispositivosFalcon.Dispositivo[dispositivoBindingSource.Position].Ds_Estado);
+            switch(estado)
+            {
+                case 'A':
+                    Radbtn_Activo.Checked = true;
+                    Radbtn_Inactivo.Checked = false;
+                    break;
+                case 'I':
+                    Radbtn_Activo.Checked = false;
+                    Radbtn_Inactivo.Checked = true;
+                    break;
+            }
         }
         public void Actualiza_Datagrid()
         {
+            // TODO: esta línea de código carga datos en la tabla 'dS_DispositivosFalcon.Dispositivo' Puede moverla o quitarla según sea necesario.
+            this.dispositivoTableAdapter.Fill(this.dS_DispositivosFalcon.Dispositivo);
             // TODO: esta línea de código carga datos en la tabla 'dsClientesFalcon.Clientes' Puede moverla o quitarla según sea necesario.
             this.clientesTableAdapter.Fill(this.dsClientesFalcon.Clientes);
-            // TODO: esta línea de código carga datos en la tabla 'dsDispositivosFalcon.Dispositivo' Puede moverla o quitarla según sea necesario.
-            this.dispositivoTableAdapter.Fill(this.dsDispositivosFalcon.Dispositivo);
         }
     }
 }

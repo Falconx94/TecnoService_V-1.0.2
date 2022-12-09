@@ -30,6 +30,10 @@ namespace Tecnoservice.Formas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,16 +63,11 @@ namespace Tecnoservice.Formas
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnEliminar = new System.Windows.Forms.Button();
             this.proveedoresTableAdapter = new Tecnoservice.DsProveedoresTableAdapters.ProveedoresTableAdapter();
-            this.dsPROVEEDOR = new Tecnoservice.dsPROVEEDOR();
-            this.proveedoresBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.proveedoresTableAdapter1 = new Tecnoservice.dsPROVEEDORTableAdapters.ProveedoresTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.proveedoresBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsProveedores)).BeginInit();
             this.grpEstado.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPROVEEDOR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proveedoresBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -125,7 +124,7 @@ namespace Tecnoservice.Formas
             // 
             this.txtIDProveedor.Location = new System.Drawing.Point(130, 63);
             this.txtIDProveedor.Name = "txtIDProveedor";
-            this.txtIDProveedor.Size = new System.Drawing.Size(142, 20);
+            this.txtIDProveedor.Size = new System.Drawing.Size(97, 20);
             this.txtIDProveedor.TabIndex = 0;
             // 
             // txtNomContac
@@ -139,7 +138,7 @@ namespace Tecnoservice.Formas
             // 
             this.txtRazo.Location = new System.Drawing.Point(129, 105);
             this.txtRazo.Name = "txtRazo";
-            this.txtRazo.Size = new System.Drawing.Size(142, 20);
+            this.txtRazo.Size = new System.Drawing.Size(98, 20);
             this.txtRazo.TabIndex = 1;
             // 
             // txtTelef
@@ -169,53 +168,63 @@ namespace Tecnoservice.Formas
             this.prvTelefonoDataGridViewTextBoxColumn,
             this.prvDireccionDataGridViewTextBoxColumn,
             this.prvEstatusDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.proveedoresBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(287, 63);
+            this.dataGridView1.DataSource = this.proveedoresBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(295, 63);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(647, 307);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(638, 307);
             this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            //this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // prvIdDataGridViewTextBoxColumn
             // 
             this.prvIdDataGridViewTextBoxColumn.DataPropertyName = "Prv_Id";
-            this.prvIdDataGridViewTextBoxColumn.HeaderText = "Prv_Id";
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prvIdDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.prvIdDataGridViewTextBoxColumn.HeaderText = "ID";
             this.prvIdDataGridViewTextBoxColumn.Name = "prvIdDataGridViewTextBoxColumn";
             this.prvIdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // prvRazonsocialDataGridViewTextBoxColumn
             // 
             this.prvRazonsocialDataGridViewTextBoxColumn.DataPropertyName = "Prv_Razonsocial";
-            this.prvRazonsocialDataGridViewTextBoxColumn.HeaderText = "Prv_Razonsocial";
+            this.prvRazonsocialDataGridViewTextBoxColumn.HeaderText = "Razon Social";
             this.prvRazonsocialDataGridViewTextBoxColumn.Name = "prvRazonsocialDataGridViewTextBoxColumn";
             this.prvRazonsocialDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // prvNombreContactoDataGridViewTextBoxColumn
             // 
             this.prvNombreContactoDataGridViewTextBoxColumn.DataPropertyName = "Prv_Nombre_Contacto";
-            this.prvNombreContactoDataGridViewTextBoxColumn.HeaderText = "Prv_Nombre_Contacto";
+            this.prvNombreContactoDataGridViewTextBoxColumn.HeaderText = "Nombre Contacto";
             this.prvNombreContactoDataGridViewTextBoxColumn.Name = "prvNombreContactoDataGridViewTextBoxColumn";
             this.prvNombreContactoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // prvTelefonoDataGridViewTextBoxColumn
             // 
             this.prvTelefonoDataGridViewTextBoxColumn.DataPropertyName = "Prv_Telefono";
-            this.prvTelefonoDataGridViewTextBoxColumn.HeaderText = "Prv_Telefono";
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prvTelefonoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.prvTelefonoDataGridViewTextBoxColumn.HeaderText = "Telefono";
             this.prvTelefonoDataGridViewTextBoxColumn.Name = "prvTelefonoDataGridViewTextBoxColumn";
             this.prvTelefonoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // prvDireccionDataGridViewTextBoxColumn
             // 
             this.prvDireccionDataGridViewTextBoxColumn.DataPropertyName = "Prv_Direccion";
-            this.prvDireccionDataGridViewTextBoxColumn.HeaderText = "Prv_Direccion";
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prvDireccionDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.prvDireccionDataGridViewTextBoxColumn.HeaderText = "Direccion";
             this.prvDireccionDataGridViewTextBoxColumn.Name = "prvDireccionDataGridViewTextBoxColumn";
             this.prvDireccionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // prvEstatusDataGridViewTextBoxColumn
             // 
             this.prvEstatusDataGridViewTextBoxColumn.DataPropertyName = "Prv_Estatus";
-            this.prvEstatusDataGridViewTextBoxColumn.HeaderText = "Prv_Estatus";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prvEstatusDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.prvEstatusDataGridViewTextBoxColumn.HeaderText = "Estatus";
             this.prvEstatusDataGridViewTextBoxColumn.Name = "prvEstatusDataGridViewTextBoxColumn";
             this.prvEstatusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -315,20 +324,6 @@ namespace Tecnoservice.Formas
             // 
             this.proveedoresTableAdapter.ClearBeforeFill = true;
             // 
-            // dsPROVEEDOR
-            // 
-            this.dsPROVEEDOR.DataSetName = "dsPROVEEDOR";
-            this.dsPROVEEDOR.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // proveedoresBindingSource1
-            // 
-            this.proveedoresBindingSource1.DataMember = "Proveedores";
-            this.proveedoresBindingSource1.DataSource = this.dsPROVEEDOR;
-            // 
-            // proveedoresTableAdapter1
-            // 
-            this.proveedoresTableAdapter1.ClearBeforeFill = true;
-            // 
             // proveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,8 +355,6 @@ namespace Tecnoservice.Formas
             this.grpEstado.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsPROVEEDOR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.proveedoresBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,16 +383,13 @@ namespace Tecnoservice.Formas
         private DsProveedores dsProveedores;
         private System.Windows.Forms.BindingSource proveedoresBindingSource;
         private DsProveedoresTableAdapters.ProveedoresTableAdapter proveedoresTableAdapter;
+        private System.Windows.Forms.ToolStripLabel btnGuardar;
+        private System.Windows.Forms.ToolStripLabel btnActualizar;
         private System.Windows.Forms.DataGridViewTextBoxColumn prvIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prvRazonsocialDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prvNombreContactoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prvTelefonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prvDireccionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prvEstatusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripLabel btnGuardar;
-        private System.Windows.Forms.ToolStripLabel btnActualizar;
-        private dsPROVEEDOR dsPROVEEDOR;
-        private System.Windows.Forms.BindingSource proveedoresBindingSource1;
-        private dsPROVEEDORTableAdapters.ProveedoresTableAdapter proveedoresTableAdapter1;
     }
 }

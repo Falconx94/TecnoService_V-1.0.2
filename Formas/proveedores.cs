@@ -24,10 +24,8 @@ namespace Tecnoservice.Formas
 
         private void proveedores_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'dsPROVEEDOR.Proveedores' Puede moverla o quitarla según sea necesario.
-            this.proveedoresTableAdapter1.Fill(this.dsPROVEEDOR.Proveedores);
             // TODO: esta línea de código carga datos en la tabla 'dsProveedores.Proveedores' Puede moverla o quitarla según sea necesario.
-            //this.proveedoresTableAdapter.Fill(this.dsProveedores.Proveedores);
+            this.proveedoresTableAdapter.Fill(this.dsProveedores.Proveedores);
             Actualizar_Datagrid();
             Consecutivo();
         }
@@ -40,8 +38,7 @@ namespace Tecnoservice.Formas
 
         public void Actualizar_Datagrid()
         {
-            this.proveedoresTableAdapter1.Fill(this.dsPROVEEDOR.Proveedores);
-            //this.proveedoresTableAdapter.Fill(this.dsProveedores.Proveedores);
+            this.proveedoresTableAdapter.Fill(this.dsProveedores.Proveedores);
         }
         public void Consecutivo()
         {
@@ -102,7 +99,8 @@ namespace Tecnoservice.Formas
             txtDireccion.Text = "";
             txtTelef.Text = "";
             Consecutivo();
-            Actualizar_Datagrid(); }
+            Actualizar_Datagrid();
+        }
 
         public void Actualizar()
         {
@@ -166,29 +164,10 @@ namespace Tecnoservice.Formas
             txtDireccion.Enabled = false;
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            txtIDProveedor.Text = this.dsPROVEEDOR.Proveedores[proveedoresBindingSource1.Position].Prv_Id.ToString();
-            txtRazo.Text = this.dsPROVEEDOR.Proveedores[proveedoresBindingSource1.Position].Prv_Razonsocial.ToString();
-            txtNomContac.Text = this.dsPROVEEDOR.Proveedores[proveedoresBindingSource1.Position].Prv_Nombre_Contacto.ToString();
-            txtTelef.Text = this.dsPROVEEDOR.Proveedores[proveedoresBindingSource1.Position].Prv_Telefono.ToString();
-            txtDireccion.Text = this.dsPROVEEDOR.Proveedores[proveedoresBindingSource1.Position].Prv_Direccion.ToString();
-            char Status = Convert.ToChar(dsPROVEEDOR.Proveedores[proveedoresBindingSource1.Position].Prv_Estatus);
-            switch (Status)
-            {
-                case 'A':
-                    Radbtn_Activo.Checked = true;
-                    break;
-                case 'I':
-                    Radbtn_Inactivo.Checked = true;
-                    break;
-                default:
-                    Radbtn_Activo.Checked = false;
-                    Radbtn_Inactivo.Checked = false;
-                    break;
-            }
-        }
+        //private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        //{
+           
+        //}
 
         public void Eliminar()
         {
@@ -218,6 +197,30 @@ namespace Tecnoservice.Formas
         {
             Form Menu = new Menu_Principal();
             Menu.Show();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        { 
+            txtIDProveedor.Text = this.dsProveedores.Proveedores[proveedoresBindingSource.Position].Prv_Id.ToString();
+            txtRazo.Text = this.dsProveedores.Proveedores[proveedoresBindingSource.Position].Prv_Razonsocial.ToString();
+            txtNomContac.Text = this.dsProveedores.Proveedores[proveedoresBindingSource.Position].Prv_Nombre_Contacto.ToString();
+            txtTelef.Text = this.dsProveedores.Proveedores[proveedoresBindingSource.Position].Prv_Telefono.ToString();
+            txtDireccion.Text = this.dsProveedores.Proveedores[proveedoresBindingSource.Position].Prv_Direccion.ToString();
+            char Status = Convert.ToChar(dsProveedores.Proveedores[proveedoresBindingSource.Position].Prv_Estatus);
+            switch (Status)
+            {
+                case 'A':
+                    Radbtn_Activo.Checked = true;
+                    break;
+                case 'I':
+                    Radbtn_Inactivo.Checked = true;
+                    break;
+                default:
+                    Radbtn_Activo.Checked = false;
+                    Radbtn_Inactivo.Checked = false;
+                    break;
+            }
+
         }
 
         public bool valida_info()

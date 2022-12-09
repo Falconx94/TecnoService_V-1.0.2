@@ -33,3 +33,5 @@ AS
 				Select * from Dispositivo where Clt_Id = @dis_CltID
 			End
 	End
+
+	select * from Dispositivo
